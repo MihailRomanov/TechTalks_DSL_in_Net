@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "JSON Schema for my JSON file format",
+
+  "type": "object",
+  "required": ["Name", "Title", "Height", "Width"],
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "string"
+    }
+    "Width": {
+      "type": "number"
+    },
+    "Height": {
+      "type": "number"
+    },
+    "Fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/FieldType"
+      }
+    }
+  },
+  "definitions": {
+    "FieldType": {
+      "type": "object",
+      "required": ["Name", "Type"],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string",
+          "enum": [ "Int32", "String", "DateTime", "Double" ]
+        }
+      }
+    }
+  }
+}

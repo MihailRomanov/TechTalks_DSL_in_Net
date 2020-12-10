@@ -1,0 +1,77 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ parameter type="System.String" name="Namespace" #>
+<#@ parameter type="ExternalDSL.Generator.DialogModel" name="Model" #>
+
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+
+namespace <#= Namespace #>
+{
+	public class <#= Model.Name #> : Window, INotifyPropertyChanged
+	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected void OnPropertyChanged([CallerMemberName] string name = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+		}
+
+<# foreach(ExternalDSL.Generator.DialogField field in Model.Fields) { #>
+		private <#= field.Type.ToString() #> f_<#=field.Name #>;
+		public <#= field.Type.ToString() #> <#=field.Name #>
+		{
+			get { return  f_<#=field.Name #>; }
+			set { f_<#=field.Name #> = value; OnPropertyChanged("<#=field.Name #>"); }
+		}
+<#} #>
+
+		public <#= Model.Name #>()
+		{
+			Height = <#= Model.Height #>;
+			Width = <#= Model.Width #>;
+			Title = "<#=Model.Title #>";
+
+			var docPanel = new DockPanel() { Margin = new Thickness(10), LastChildFill = true };
+			Content = docPanel;
+
+			var buttonPanel = new StackPanel()
+			{
+				Height = 37,
+				Orientation = Orientation.Horizontal,
+				HorizontalAlignment = HorizontalAlignment.Right
+			};
+
+			docPanel.Children.Add(buttonPanel);
+			buttonPanel.SetValue(DockPanel.DockProperty, Dock.Bottom);
+
+			var okButton = new Button() { Content = "OK", Width = 75, IsDefault = true, IsCancel = true };
+			okButton.Click += (sender, args) => { DialogResult = true; };
+
+			var cancelButton = new Button() { Content = "Cancel", Width = 75, IsCancel = true };
+			cancelButton.Click += (sender, args) => { DialogResult = false; };
+
+			buttonPanel.Children.Add(okButton);
+			buttonPanel.Children.Add(cancelButton);
+
+			var fieldsPannel = new StackPanel();
+			docPanel.Children.Add(fieldsPannel);
+			fieldsPannel.SetValue(DockPanel.DockProperty, Dock.Top);
+
+<# foreach(ExternalDSL.Generator.DialogField field in Model.Fields) { #>
+			fieldsPannel.Children.Add(new TextBlock() { Text = "<#= field.Name #>" });
+			var wpfField_<#= field.Name #> = new TextBox();
+			fieldsPannel.Children.Add(wpfField_<#= field.Name #>);
+			wpfField_<#= field.Name #>.SetBinding(TextBox.TextProperty, new Binding("<#= field.Name #>") { Source = this, Mode = BindingMode.TwoWay });
+<#} #>
+		}
+	}
+}

@@ -1,0 +1,5 @@
+﻿Dialog MyGrammarDialog(200, 300) "Hello"
+{
+	F1 : String;
+	F2 : Int32;
+}

@@ -1,0 +1,16 @@
+{
+  "Name": "JsonDialog",
+  "Title": "TTTT",
+  "Width": 400,
+  "Height": 200,
+  "Fields": [
+    {
+      "Name": "Field1",
+      "Type": "String"
+    },
+    {
+      "Name": "F2",
+      "Type": "Double"
+    },
+  ]
+}

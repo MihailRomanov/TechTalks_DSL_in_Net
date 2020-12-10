@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoDSL", "NoDSL\NoDSL.csproj", "{9A28633C-6C36-4401-904D-A7DA3ACBBB8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InternalDSL", "InternalDSL", "{D66A1CAB-7976-4003-9C4C-46A9A2FF1D0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternalDSL", "InternalDSL\InternalDSL\InternalDSL.csproj", "{400168A1-B70B-4EC2-BBE6-C5DBA8A0C887}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternalDSL.Tests", "InternalDSL\InternalDSL.Tests\InternalDSL.Tests.csproj", "{7D2DA1E6-BE2C-4432-8770-F63F5BA5153A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalDSL", "ExternalDSL", "{591626D6-9B57-4AC9-8F13-B2D409DB939B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalDSL", "ExternalDSL\ExternalDSL\ExternalDSL.csproj", "{7FFB90F4-DB62-4E30-80DF-707B46AEE92D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalDSL.Tests", "ExternalDSL\ExternalDSL.Tests\ExternalDSL.Tests.csproj", "{DB10A162-1BF4-4ECE-AEA5-9BA30A821F19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{E767C9DD-33AD-48D5-82B8-94F6709E072C}"
+	ProjectSection(SolutionItems) = preProject
+		ExternalDSL\Schemas\JsonModelSchema.json = ExternalDSL\Schemas\JsonModelSchema.json
+		ExternalDSL\Schemas\XmlDialogModel.xsd = ExternalDSL\Schemas\XmlDialogModel.xsd
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A28633C-6C36-4401-904D-A7DA3ACBBB8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A28633C-6C36-4401-904D-A7DA3ACBBB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A28633C-6C36-4401-904D-A7DA3ACBBB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A28633C-6C36-4401-904D-A7DA3ACBBB8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{400168A1-B70B-4EC2-BBE6-C5DBA8A0C887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{400168A1-B70B-4EC2-BBE6-C5DBA8A0C887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{400168A1-B70B-4EC2-BBE6-C5DBA8A0C887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{400168A1-B70B-4EC2-BBE6-C5DBA8A0C887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2DA1E6-BE2C-4432-8770-F63F5BA5153A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2DA1E6-BE2C-4432-8770-F63F5BA5153A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2DA1E6-BE2C-4432-8770-F63F5BA5153A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2DA1E6-BE2C-4432-8770-F63F5BA5153A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FFB90F4-DB62-4E30-80DF-707B46AEE92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFB90F4-DB62-4E30-80DF-707B46AEE92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFB90F4-DB62-4E30-80DF-707B46AEE92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFB90F4-DB62-4E30-80DF-707B46AEE92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB10A162-1BF4-4ECE-AEA5-9BA30A821F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB10A162-1BF4-4ECE-AEA5-9BA30A821F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB10A162-1BF4-4ECE-AEA5-9BA30A821F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB10A162-1BF4-4ECE-AEA5-9BA30A821F19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{400168A1-B70B-4EC2-BBE6-C5DBA8A0C887} = {D66A1CAB-7976-4003-9C4C-46A9A2FF1D0D}
+		{7D2DA1E6-BE2C-4432-8770-F63F5BA5153A} = {D66A1CAB-7976-4003-9C4C-46A9A2FF1D0D}
+		{7FFB90F4-DB62-4E30-80DF-707B46AEE92D} = {591626D6-9B57-4AC9-8F13-B2D409DB939B}
+		{DB10A162-1BF4-4ECE-AEA5-9BA30A821F19} = {591626D6-9B57-4AC9-8F13-B2D409DB939B}
+		{E767C9DD-33AD-48D5-82B8-94F6709E072C} = {591626D6-9B57-4AC9-8F13-B2D409DB939B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3B741DB-537D-4250-B799-4C54D3FD9033}
+	EndGlobalSection
+EndGlobal

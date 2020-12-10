@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <UsingTask TaskName="ExternalDSL.XmlGeneratorTask" AssemblyFile="ExternalDSL.dll" />
+    <UsingTask TaskName="ExternalDSL.JsonGeneratorTask" AssemblyFile="ExternalDSL.dll" />
+    <UsingTask TaskName="ExternalDSL.GrammarGeneratorTask" AssemblyFile="ExternalDSL.dll" />
+
+    <Target Name="GenerateFromXmlModel">
+        <ExternalDSL.XmlGeneratorTask ModelFiles="@(XmlModel)"
+                                  Namespace="$(RootNamespace)"
+                                  OutFolder="$(BaseIntermediateOutputPath)">
+            <Output TaskParameter="ResultFiles"
+                  ItemName="Compile" />
+        </ExternalDSL.XmlGeneratorTask>
+    </Target>
+
+    <Target Name="GenerateFromJsonModel">
+        <ExternalDSL.JsonGeneratorTask ModelFiles="@(JsonModel)"
+                                  Namespace="$(RootNamespace)"
+                                  OutFolder="$(BaseIntermediateOutputPath)">
+            <Output TaskParameter="ResultFiles"
+                  ItemName="Compile" />
+        </ExternalDSL.JsonGeneratorTask>
+    </Target>
+
+    <Target Name="GenerateFromGrammarModel">
+        <ExternalDSL.GrammarGeneratorTask ModelFiles="@(GrammarModel)"
+                                  Namespace="$(RootNamespace)"
+                                  OutFolder="$(BaseIntermediateOutputPath)">
+            <Output TaskParameter="ResultFiles"
+                  ItemName="Compile" />
+        </ExternalDSL.GrammarGeneratorTask>
+    </Target>
+
+
+    <PropertyGroup>
+        <CoreCompileDependsOn>$(CoreCompileDependsOn);GenerateFromXmlModel;GenerateFromJsonModel;GenerateFromGrammarModel</CoreCompileDependsOn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AvailableItemName Include="XmlModel" />
+        <AvailableItemName Include="JsonModel" />
+        <AvailableItemName Include="GrammarModel" />
+    </ItemGroup>
+
+</Project>

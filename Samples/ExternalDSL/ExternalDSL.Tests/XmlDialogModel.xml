@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DialogModel xmlns="https://kontur.ru/schemas/xml_dsl_sample"
+    Title="AAA AAAA" Name="XmlBasedDialog" Height="300" Width="300">
+    <Fields>
+        <DialogField Name="Field1" Type="Double"/>
+    </Fields>
+</DialogModel>

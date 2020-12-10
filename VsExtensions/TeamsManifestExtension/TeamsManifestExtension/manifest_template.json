@@ -1,0 +1,30 @@
+﻿{
+  "manifestVersion": "",
+  "version": "",
+  "id": "",
+  "packageName": "",
+  "developer": {
+    "name": "",
+    "websiteUrl": "",
+    "privacyUrl": "",
+    "termsOfUseUrl": ""
+  },
+  "accentColor": "",
+  "description": {
+    "short": "",
+    "full": ""
+  },
+  "icons": {
+    "color": "",
+    "outline": ""
+  },
+  "name": { "short": "" },
+  "staticTabs": [
+    {
+      "contentUrl": "",
+      "entityId": "",
+      "name": "",
+      "scopes": [ "team" ]
+    }
+  ]
+}

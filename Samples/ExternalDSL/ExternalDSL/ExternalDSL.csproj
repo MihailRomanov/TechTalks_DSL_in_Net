@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Irony" Version="1.1.0" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.8.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvailableItemName Include="T4Runtime" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <T4Runtime Include="Generator\DialogGenerator.tt">
+            <Generator>MSBuild:Compile</Generator>
+        </T4Runtime>
+    </ItemGroup>
+
+
+    <Target Name="T4Runtime">
+        <Exec Condition="'@(T4Runtime)' != ''" WorkingDirectory="$(ProjectDir)" Command="dotnet tool run t4 %(T4Runtime.Identity) -c %(T4Runtime.FileName)  -o $(BaseIntermediateOutputPath)%(T4Runtime.Filename).g.cs" />
+        <ItemGroup Condition="'@(T4Runtime)' != ''">
+            <Compile Include="$(BaseIntermediateOutputPath)%(T4Runtime.Filename).g.cs" />
+        </ItemGroup>
+    </Target>
+
+    <PropertyGroup>
+        <CoreCompileDependsOn>$(CoreCompileDependsOn);T4Runtime</CoreCompileDependsOn>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <Content Include="build\ExternalDSL.props">
+            <PackagePath>build</PackagePath>
+        </Content>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);AddCustomFiles</GenerateNuspecDependsOn>
+        <Version>1.0.15</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+    <Target Name="AddCustomFiles">
+        <ItemGroup>
+            <_PackageFiles Include="$(OutputPath)ExternalDSL.dll;$(OutputPath)Newtonsoft.Json.dll;$(OutputPath)Irony.dll">
+                <PackagePath>build</PackagePath>
+            </_PackageFiles>
+        </ItemGroup>
+    </Target>
+
+
+</Project>

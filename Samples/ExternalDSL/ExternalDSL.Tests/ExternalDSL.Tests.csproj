@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="GrammarDialogModel.dlg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <GrammarModel Include="GrammarDialogModel.dlg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <JsonModel Include="JsonDialogModel.json" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExternalDSL" Version="1.0.15" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <XmlModel Include="XmlDialogModel.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="JsonDialogModel.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="XmlDialogModel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties jsondialogmodel_1json__JsonSchema="..\Schemas\JsonModelSchema.json" /></VisualStudio></ProjectExtensions>
+
+</Project>

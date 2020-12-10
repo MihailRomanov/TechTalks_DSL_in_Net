@@ -1,0 +1,17 @@
+﻿<!--DSL Tools Language Template-->
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<TemplateData>
+		<TemplateID>{495c160e-eeae-4872-ab27-1c612fae115e}</TemplateID>
+		<Name Package="{ac482944-ef91-4a4c-9e92-0278bf2f4d02}" ID="103"/>
+		<Description Package="{ac482944-ef91-4a4c-9e92-0278bf2f4d02}" ID="102"/>
+		<Icon Package="{ac482944-ef91-4a4c-9e92-0278bf2f4d02}" ID="201" />
+		<ProjectType>CSharp</ProjectType>
+		<SortOrder>360</SortOrder>
+		<DefaultName>NHModelingLanguage.nhml</DefaultName>
+	</TemplateData>
+	<TemplateContent>
+		<ProjectItem TargetFileName="$fileinputname$.nhml">nhml.nhml</ProjectItem>
+		<ProjectItem TargetFileName="$fileinputname$.nhml.diagram">nhml.diagram</ProjectItem>
+	</TemplateContent>
+</VSTemplate>
+
